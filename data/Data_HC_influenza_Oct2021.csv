@@ -1,0 +1,67 @@
+Dose,Total ,Infected,Unit,Subtype,Vaccine,Type,Reassortant
+1000000,16,3,TCID50,H3N2,Yes,Live vaccine,No
+1000000,16,10,TCID50,H3N2,Yes,Inactivated vaccine,No
+1000000,24,23,TCID50,H3N2,No,Unvaccinated controls,No
+1000000,16,11,TCID50,H3N2,Yes,Live vaccine,No
+1000000,16,11,TCID50,H3N2,Yes,Inactivated vaccine,No
+1000000,27,25,TCID50,H3N2,No,Unvaccinated controls,No
+10000,14,7,TCID50,H1N1,Yes,Live vaccine,No
+10000,18,12,TCID50,H1N1,Yes,Inactivated vaccine,No
+10000,15,11,TCID50,H1N1,No,Unvaccinated controls,No
+2511886.432,20,12,TCID50,H1N1,Yes,Live vaccine,No
+2511886.432,16,7,TCID50,H1N1,Yes,Inactivated vaccine,No
+2511886.432,28,26,TCID50,H1N1,No,Unvaccinated controls,No
+10000000,11,5,TCID50,H3N2,Yes,Live vaccine,No
+10000000,10,10,TCID50,H3N2,No,Unvaccinated controls,No
+10000000,13,9,TCID50,B,Yes,Live vaccine,No
+10000000,12,10,TCID50,B,No,Unvaccinated controls,No
+10000000,10,3,TCID50,H1N1,Yes,Live vaccine,No
+10000000,10,2,TCID50,H1N1,Yes,Inactivated vaccine,No
+10000000,12,7,TCID50,H1N1,No,Placebo,No
+10000000,8,4,TCID50,H3N2,Yes,Live vaccine,No
+10000000,10,3,TCID50,H3N2,Yes,Inactivated vaccine,No
+10000000,4,3,TCID50,H3N2,No,Placebo,No
+10000000,7,2,TCID50,B,Yes,Live vaccine,No
+10000000,7,0,TCID50,B,Yes,Inactivated vaccine,No
+10000000,8,5,TCID50,B,No,Placebo,No
+10000,15,11,TCID50,H1N1,No,Unvaccinated controls,No
+31622.7766,9,8,TCID50,H1N1,No,Unvaccinated controls,No
+15848.93192,6,6,TCID50,H1N1,No,Unvaccinated controls,No
+10000000,14,14,TCID50,H1N1,No,Unvaccinated controls,No
+10000000,16,16,TCID50,H1N1,No,Unvaccinated controls,No
+2511886.432,28,26,TCID50,H1N1,No,Unvaccinated controls,No
+5011872.336,22,20,TCID50,H1N1,No,Unvaccinated controls,No
+100000,19,19,TCID50,H1N1,No,Unvaccinated controls,No
+100000,8,8,TCID50,H1N1,No,Unvaccinated controls,No
+100000,8,8,TCID50,H1N1,No,Unvaccinated controls,No
+1000000,12,8,TCID50,H1N1,No,Unvaccinated controls,No
+1000000,16,13,TCID50,H1N1,No,Unvaccinated controls,No
+1000000,18,17,TCID50,H1N1,No,Unvaccinated controls,No
+1000000,19,14,TCID50,H1N1,No,Unvaccinated controls,No
+100000,33,24,TCID50,H1N1,No,Unvaccinated controls,No
+100000,26,25,TCID50,H1N1,No,Unvaccinated controls,No
+15848.93192,8,8,TCID50,H3N2,No,Unvaccinated controls,No
+10000000,10,10,TCID50,H3N2,No,Unvaccinated controls,No
+14125375.45,19,18,TCID50,H3N2,No,Unvaccinated controls,No
+25118864.32,7,7,TCID50,H3N2,No,Unvaccinated controls,No
+1000000,14,12,TCID50,H3N2,No,Unvaccinated controls,No
+10000000,24,22,TCID50,H3N2,No,Unvaccinated controls,No
+158489.3192,19,19,TCID50,H3N2,No,Unvaccinated controls,No
+1000000,27,25,TCID50,H3N2,No,Unvaccinated controls,No
+31622776.6,15,13,TCID50,H3N2,No,Unvaccinated controls,Yes
+3162277.66,14,8,TCID50,H3N2,No,Unvaccinated controls,Yes
+316227.766,12,4,TCID50,H3N2,No,Unvaccinated controls,Yes
+31622.7766,12,4,TCID50,H3N2,No,Unvaccinated controls,Yes
+31622776.6,22,16,TCID50,H3N2,No,Unvaccinated controls,Yes
+3162277.66,11,6,TCID50,H3N2,No,Unvaccinated controls,Yes
+316227.766,13,1,TCID50,H3N2,No,Unvaccinated controls,Yes
+31622.7766,12,3,TCID50,H3N2,No,Unvaccinated controls,Yes
+10000000,10,10,TCID50,H3N2,No,Unvaccinated controls,No
+126,3,0,TCID50,H3N2,No,Unvaccinated controls,No
+78,3,0,TCID50,H3N2,No,Unvaccinated controls,No
+59,3,1,TCID50,H3N2,No,Unvaccinated controls,No
+1,1,1,TCID50,H3N2,No,Unvaccinated controls,No
+2,4,1,TCID50,H3N2,No,Unvaccinated controls,No
+5,9,4,TCID50,H3N2,No,Unvaccinated controls,No
+127,15,4,TCID50,A/H3N2,Yes,Live attenuated vaccine,No
+127,14,0,TCID50,A/H3N2,Yes,Live attenuated vaccine,No
