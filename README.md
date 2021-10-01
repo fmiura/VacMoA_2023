@@ -5,7 +5,7 @@ Supporting materials for Miura F, Klinkenberg D, Ainslie K, Wallinga J (2021). "
 This is a preprint version (Not peer reviewed yet)
 
 ## Licence
-[MIT](https://github.com/fmiura/VacAllo_2021/blob/main/LICENSE)
+[MIT](https://github.com/fmiura/VacMoA_2021/blob/main/LICENSE)
 
 ## About this repository
 | Folder    | Description |
