@@ -49,7 +49,7 @@ fig_1A_DRmodel <- ggplot() +
   geom_line(data=twolev_example, aes(x=log10dose,y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[10], size=1) +
   theme_classic(base_size = 24) +
   theme(legend.position = "none") +
-  labs(x="log10(Dose)", y = "Probability of infection")
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Probability of infection")
 
 z_f1 <- seq(0,10,length=10^4)
 gamma_ex_d <- as.data.frame(list(z=z_f1, dens=dgamma(z_f1, shape = 5, scale = 0.2))) 
@@ -92,9 +92,9 @@ fig_1B <- ggplot() +
   geom_line(data=Mix_example, aes(x=log10dose,y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[2], size=1) +
   theme_classic(base_size = 24) +
   theme(legend.position = "none") +
-  labs(x="log10(Dose)", y = "Probability of infection")
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Probability of infection")
 
-(fig_1A | fig_1B) + plot_layout(widths = c(3, 1, 3)) + plot_annotation(tag_levels = c('A', rep('',3), 'B'))
+(fig_1A | fig_1B) + plot_layout(widths = c(3, 1, 3)) + plot_annotation(tag_levels = c('A', rep('',3), 'B')) #1700x653
 
 
 #####Fig2 -----
@@ -105,9 +105,9 @@ Leak_vac_plot <- as.data.frame(list(dose=x2, log10dose=log10(x2), pred= Mix_DR_g
 Mix_vac_plot <- as.data.frame(list(dose=x2, log10dose=log10(x2), pred= Mix_DR_gamma(x2,est_para_list$gamma_nonvac$est, est_para_list$VacMix_gamma$est), low = mix_gamma_vac_traject$percentile_bt[1,], upp = mix_gamma_vac_traject$percentile_bt[3,]))
 Gen_vac_plot <- as.data.frame(list(dose=x2, log10dose=log10(x2), pred=  DR_tweedie(x2,est_para_list$tweedie_vac$est), low = tweedie_vac_traject$percentile_bt[1,], upp = tweedie_vac_traject$percentile_bt[3,]))
 
-fig_2A <- ggplot() + 
+fig_2Aa <- ggplot() + 
   xlim(-3,12) +
-  ylim(0,1) +
+  ylim(0,1.1) +
   geom_point(data=data_plot, aes(x=LogDose,y=Prob, color=Vaccine, size=Total),alpha=0.4) + 
   scale_color_manual(values = c(RColorBrewer::brewer.pal(11, "RdBu")[11],RColorBrewer::brewer.pal(11, "RdBu")[1])) +
   geom_line(data=Nonvac_plot, aes(x=log10dose, y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[11], size=1) +
@@ -116,14 +116,28 @@ fig_2A <- ggplot() +
   geom_ribbon(data=AoN_vac_plot, aes(x=log10dose,ymin=low,ymax=upp), fill = RColorBrewer::brewer.pal(11, "RdBu")[4], alpha=0.1) +
   geom_line(data=Leak_vac_plot, aes(x=log10dose, y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[3], size=1) +
   geom_ribbon(data=Leak_vac_plot, aes(x=log10dose,ymin=low,ymax=upp), fill = RColorBrewer::brewer.pal(11, "RdBu")[3], alpha=0.1) +
-  geom_line(data=Mix_vac_plot, aes(x=log10dose, y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[2], size=1,linetype="dashed") +
+  theme_classic(base_size = 24) +
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Probability of infection") + 
+  annotate("text", x = c(Inf, Inf,Inf), y=c(1.1, 0.85,0.6),hjust=1,label = c("Unvaccinated","Leaky", "All-or-nothing"), color=c(RColorBrewer::brewer.pal(11, "RdBu")[11],RColorBrewer::brewer.pal(11, "RdBu")[3], RColorBrewer::brewer.pal(11, "RdBu")[4]), size=c(6,6,6))+
+  scale_y_continuous(breaks=seq(0,1,0.25))
+
+fig_2Ab <- ggplot() + 
+  xlim(-3,12) +
+  ylim(0,1.1) +
+  geom_point(data=data_plot, aes(x=LogDose,y=Prob, color=Vaccine, size=Total),alpha=0.4) + 
+  scale_color_manual(values = c(RColorBrewer::brewer.pal(11, "RdBu")[11],RColorBrewer::brewer.pal(11, "RdBu")[1])) +
+  geom_line(data=Nonvac_plot, aes(x=log10dose, y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[11], size=1) +
+  geom_ribbon(data=Nonvac_plot, aes(x=log10dose,ymin=low,ymax=upp), fill = RColorBrewer::brewer.pal(11, "RdBu")[11], alpha=0.1) +
+  geom_line(data=Mix_vac_plot, aes(x=log10dose, y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[2], size=1) +
   geom_ribbon(data=Mix_vac_plot, aes(x=log10dose,ymin=low,ymax=upp), fill = RColorBrewer::brewer.pal(11, "RdBu")[2], alpha=0.1) +
   theme_classic(base_size = 24) +
-  labs(x="log10(Dose)", y = "Probability of infection")
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Probability of infection")+
+  annotate("text", x = c(Inf, Inf), y=c(1.1,0.675),hjust=1,label = c("Unvaccinated","Mixture"), color=c(RColorBrewer::brewer.pal(11, "RdBu")[11], RColorBrewer::brewer.pal(11, "RdBu")[2]), size=c(6,6))+
+  scale_y_continuous(breaks=seq(0,1,0.25))
 
 fig_2B <- ggplot() + 
   xlim(-3,12) +
-  ylim(0,1) +
+  ylim(0,1.1) +
   geom_point(data=data_plot, aes(x=LogDose,y=Prob, color=Vaccine, size=Total),alpha=0.4) + 
   scale_color_manual(values = c(RColorBrewer::brewer.pal(11, "RdBu")[11],RColorBrewer::brewer.pal(11, "RdBu")[1])) +
   geom_line(data=Nonvac_plot, aes(x=log10dose, y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[11], size=1) +
@@ -131,7 +145,9 @@ fig_2B <- ggplot() +
   geom_line(data=Gen_vac_plot, aes(x=log10dose, y=pred), color=RColorBrewer::brewer.pal(11, "RdBu")[1], size=1) +
   geom_ribbon(data=Gen_vac_plot, aes(x=log10dose,ymin=low,ymax=upp), fill = RColorBrewer::brewer.pal(11, "RdBu")[1], alpha=0.1) +
   theme_classic(base_size = 24) +
-  labs(x="log10(Dose)", y = "Probability of infection")
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Probability of infection")+
+  annotate("text", x = c(Inf, Inf), y=c(1.1,0.65),hjust=1,label = c("Unvaccinated","Generalized"), color=c(RColorBrewer::brewer.pal(11, "RdBu")[11], RColorBrewer::brewer.pal(11, "RdBu")[1]), size=c(6,6))+
+  scale_y_continuous(breaks=seq(0,1,0.25))
 
 ###Fig-2(C), density
 ##Tweedie (vaccinated)
@@ -172,15 +188,15 @@ fig_2C1 <- ggplot() +
   xlim(0,max(nonvac_gam_dens$susceptibility)) + 
   ylim(0,max(nonvac_gam_dens$density)) + 
   geom_area(data = nonvac_gam_dens, aes(x=susceptibility,y=density), color=RColorBrewer::brewer.pal(11, "RdBu")[11], fill=RColorBrewer::brewer.pal(11, "RdBu")[11], alpha=0.5) +
-  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 24))+
+  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 20), plot.margin = unit(c(0.1,0.5,0.1,0.1), "cm"))+
   labs(x="Susceptibility", y = "Density") +
-  annotate("text",  x=Inf, y = Inf, label = "Non-vaccinated", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[11], size=6)
+  annotate("text",  x=Inf, y = Inf, label = "Unvaccinated", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[11], size=6)
 #AoN_gam_dens, All-or-nothing
 fig_2C2 <- ggplot() +
   xlim(0,max(AoN_gam_dens$susceptibility)) + 
   ylim(0,max(AoN_gam_dens$density)) + 
   geom_area(data = AoN_gam_dens, aes(x=susceptibility,y=density), color=RColorBrewer::brewer.pal(11, "RdBu")[4], fill=RColorBrewer::brewer.pal(11, "RdBu")[4], alpha=0.5) +
-  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 24))+
+  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 20), plot.margin = unit(c(0.1,0.5,0.1,0.1), "cm"))+
   labs(x="Susceptibility", y = "Density") +
   annotate("text",  x=Inf, y = Inf, label = "All-or-Nothing", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[4], size=6)
 #Leak_gam_dens, Leaky
@@ -188,7 +204,7 @@ fig_2C3 <- ggplot() +
   xlim(0,max(Leak_gam_dens$susceptibility)) + 
   ylim(0,max(Leak_gam_dens$density)) + 
   geom_area(data = Leak_gam_dens, aes(x=susceptibility,y=density), color=RColorBrewer::brewer.pal(11, "RdBu")[3], fill=RColorBrewer::brewer.pal(11, "RdBu")[3], alpha=0.5) +
-  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 24))+
+  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 20), plot.margin = unit(c(0.1,0.5,0.1,0.1), "cm"))+
   labs(x="Susceptibility", y = "Density") +
   annotate("text",  x=Inf, y = Inf, label = "Leaky", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[3], size=6)
 #Mix_gam_dens, Mixture 
@@ -196,7 +212,7 @@ fig_2C4 <- ggplot() +
   xlim(0,max(Mix_gam_dens$susceptibility)) + 
   ylim(0,max(Mix_gam_dens$density)) + 
   geom_area(data = Mix_gam_dens, aes(x=susceptibility,y=density), color=RColorBrewer::brewer.pal(11, "RdBu")[2], fill=RColorBrewer::brewer.pal(11, "RdBu")[2], alpha=0.5) +
-  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 24))+
+  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 20), plot.margin = unit(c(0.1,0.5,0.1,0.1), "cm"))+
   labs(x="Susceptibility", y = "Density") +
   annotate("text",  x=Inf, y = Inf, label = "Mixture", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[2], size=6)
 #GenVac_Twee_dens, Generalized vaccinated model with Tweedie
@@ -204,14 +220,14 @@ fig_2C5 <- ggplot() +
   xlim(0,max(GenVac_Twee_dens$susceptibility)) + 
   ylim(0,max(GenVac_Twee_dens$density)) + 
   geom_area(data = GenVac_Twee_dens, aes(x=susceptibility,y=density), color=RColorBrewer::brewer.pal(11, "RdBu")[1], fill=RColorBrewer::brewer.pal(11, "RdBu")[1], alpha=0.5) +
-  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 24))+
+  theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 20), plot.margin = unit(c(0.1,0.5,0.1,0.1), "cm"))+
   labs(x="Susceptibility", y = "Density") +
   annotate("text",  x=Inf, y = Inf, label = "Generalized", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[1], size=6)
 
 fig_2C <- (fig_2C1 / fig_2C2 / fig_2C3 / fig_2C4 / fig_2C5) 
-fig_2 <- (fig_2A / fig_2B) | fig_2C
+fig_2 <- (fig_2Aa / fig_2Ab / fig_2B) | fig_2C
 
-fig_2 + plot_annotation(tag_levels = 'A')
+fig_2 + plot_annotation(tag_levels = 'A') #1700x1150
 
 #####Fig3 -----
 #x values for plot (=dose)
@@ -256,7 +272,7 @@ fig_3A <- ggplot() +
   geom_ribbon(data = VE_result_AoN, aes(x=log10dose,ymin=low,ymax=upp), fill = "grey30", alpha=0.1) +
   geom_line(data = VE_result_AoN, aes(x=log10dose,y=VE_AoN), color=RColorBrewer::brewer.pal(11, "RdBu")[4], alpha=0.75, size=1.1) +
   theme(panel.background = element_rect(fill = "white", colour = "grey50") , text = element_text(size = 24))+
-  labs(x="log10(Dose)", y = "Vaccine efficacy") +
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Vaccine efficacy") +
   annotate("text",  x=Inf, y = Inf, label = "All-or-Nothing", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[4], size=6)
 
 fig_3B <- ggplot() +
@@ -265,7 +281,7 @@ fig_3B <- ggplot() +
   geom_ribbon(data = VE_result_Leak, aes(x=log10dose,ymin=low,ymax=upp), fill = "grey30", alpha=0.1) +
   geom_line(data = VE_result_Leak, aes(x=log10dose,y=VE_Leak), color=RColorBrewer::brewer.pal(11, "RdBu")[3], alpha=0.75, size=1.1) +
   theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 24))+
-  labs(x="log10(Dose)", y = "Vaccine efficacy") +
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Vaccine efficacy") +
   annotate("text",  x=Inf, y = Inf, label = "Leaky", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[3], size=6)
 
 fig_3C1 <- ggplot() +
@@ -274,7 +290,7 @@ fig_3C1 <- ggplot() +
   geom_ribbon(data = VE_result_Mix, aes(x=log10dose,ymin=low,ymax=upp), fill = "grey30", alpha=0.1) +
   geom_line(data = VE_result_Mix, aes(x=log10dose,y=VE_mix), color=RColorBrewer::brewer.pal(11, "RdBu")[2], alpha=0.75, size=1.1) +
   theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 24))+
-  labs(x="log10(Dose)", y = "Vaccine efficacy") +
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Vaccine efficacy") +
   annotate("text",  x=Inf, y = Inf, label = "Mixture", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[2], size=6) 
 
 fig_3C2 <- ggplot() +
@@ -286,7 +302,7 @@ fig_3C2 <- ggplot() +
         axis.text = element_text(size = rel(0.75)), 
         text = element_text(size = 18) )+
   scale_y_continuous(breaks=seq(0.48110,0.48118,by=0.00004), limits = c(0.48110,0.48118))+
-  labs(x="log10(Dose)", y = "Efficacy") 
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Efficacy") 
 
 fig_3C <- fig_3C1 + inset_element(fig_3C2, left = 0.6, bottom = 0.01, right = 0.99, top = 0.4)
 
@@ -296,9 +312,9 @@ fig_3D <- ggplot() +
   geom_ribbon(data = VE_result_Gen, aes(x=log10dose,ymin=low,ymax=upp), fill = "grey30", alpha=0.1) +
   geom_line(data = VE_result_Gen, aes(x=log10dose,y=VE_Gen), color=RColorBrewer::brewer.pal(11, "RdBu")[1], alpha=0.75, size=1.1) +
   theme(panel.background = element_rect(fill = "white", colour = "grey50"), text = element_text(size = 24))+
-  labs(x="log10(Dose)", y = "Vaccine efficacy") +
+  labs(x=expression(paste({Log[10]},"(dose)", sep="")), y = "Vaccine efficacy") +
   annotate("text",  x=Inf, y = Inf, label = "Generalized", vjust=1, hjust=1, color=RColorBrewer::brewer.pal(11, "RdBu")[1], size=6)
 
 fig_3 <- (fig_3A | fig_3C) / (fig_3B | fig_3D)
 
-fig_3 + plot_annotation(tag_levels = 'A')
+fig_3 + plot_annotation(tag_levels = 'A') #1700x1000
