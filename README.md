@@ -1,5 +1,5 @@
 # Inferring efficacy and mode of action of vaccines
-Supporting materials for Miura F, Klinkenberg D, Ainslie K, Wallinga J (2021). "Inferring vaccine efficacy and mode of action from human challenge studies" (doi: to be added later) Note that the author list will be updated.
+Supporting materials for Miura F, Klinkenberg D, Ainslie K, Wallinga J (2022). "Inferring vaccine efficacy and mode of action from human challenge studies" (doi: to be added later) Note that the author list will be updated.
 
 ## Disclaimer 
 This is a preprint version (Not peer reviewed yet)
@@ -15,7 +15,7 @@ This is a preprint version (Not peer reviewed yet)
 | figures   | Raw figure files in the manuscript |
 
 ## Authors
-[Fuminari Miura](https://github.com/akira-endo), 
+[Fuminari Miura](https://github.com/fmiura), 
 [Ka Yin Leung](https://github.com/kayinleung), 
 [Don Klinkenberg](https://github.com/donkeyshot), 
 [Kylie E. C. Ainslie](https://github.com/kylieainslie),
