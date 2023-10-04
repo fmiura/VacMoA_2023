@@ -1,5 +1,5 @@
 # Inferring efficacy and mode of action of vaccines
-Supporting materials for Miura F, Klinkenberg D, Ainslie KEC, Backer JA, Leung KY, McDonald SA, de Boer P, Wallinga J (2023). "Inferring vaccine efficacy and mode of action from human challenge studies" (doi: to be added later) Note that the author list will be updated.
+Supporting materials for Miura F, Klinkenberg D, Ainslie KEC, Backer JA, Leung KY, McDonald SA, de Boer P, Wallinga J (2023). "Inferring vaccine efficacy and mode of action from human challenge studies" (https://www.medrxiv.org/content/10.1101/2023.09.24.23296054v1).
 
 ## Disclaimer 
 This is a preprint version (Not peer reviewed yet)
